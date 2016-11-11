@@ -244,6 +244,6 @@ void CreateTourSortGraph(ALGraph G, ALGraph G1) {
     G1.arcnum = arcnum;//赋值导游线路图中边的个数
     cout << "导游路线为：";
     for (i = 0; i <= n; i++)
-        cout << vex1[i];//输出导游线路图
+        cout << vex1[i] << "->";//输出导游线路图
     cout << endl;
 }
