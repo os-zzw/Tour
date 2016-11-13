@@ -31,6 +31,11 @@ void showMenu() {
     cout << "5、求两个景点间的最短路径和最短距离。" << endl;
     cout << "                  ";
     cout << "6、输出道路修建规划图。" << endl;
+    cout << "                  ";
+    cout << "7、输入景点详细信息,并进行查找排序。" << endl;
+    cout << "                  ";
+    cout << "8、停车场车辆进出记录信息。" << endl;
+    cout << "                  ";
 }
 
 bool IsZeroOrOne(int n) {
@@ -94,7 +99,7 @@ int locateNode(ALGraph g, string nodeName) {
 
 double **a;
 
-void OutputGraph(ALGraph g) {
+void OutputGraph(ALGraph g, bool isprint) {
     int i, j;
     //对邻接矩阵数组分配空间
     a = new double *[g.vexnum];
@@ -117,18 +122,19 @@ void OutputGraph(ALGraph g) {
             a[m][i] = node->w;
         }
     }
-    //遍历数组并输出
-    for (i = 0; i < g.vexnum; i++)
-        cout << "\t" << g.adjlist[i].name;
-    cout << endl;
-    for (i = 0; i < g.vexnum; i++) {
-        cout << g.adjlist[i].name << "\t";
-        for (j = 0; j < g.vexnum; j++)
-            cout << a[i][j] << "\t";
+    if (isprint) {
+        //遍历数组并输出
+        for (i = 0; i < g.vexnum; i++)
+            cout << "\t" << g.adjlist[i].name;
         cout << endl;
+        for (i = 0; i < g.vexnum; i++) {
+            cout << g.adjlist[i].name << "\t";
+            for (j = 0; j < g.vexnum; j++)
+                cout << a[i][j] << "\t";
+            cout << endl;
+        }
     }
     delete[]node;
-
 }
 
 /**
@@ -246,4 +252,54 @@ void CreateTourSortGraph(ALGraph G, ALGraph G1) {
     for (i = 0; i <= n; i++)
         cout << vex1[i] << "->";//输出导游线路图
     cout << endl;
+}
+
+/**
+ * 找回路
+ */
+
+
+/**
+ * 求两个景点之间的最短路径,和最短距离
+ */
+void ShortestPath(ALGraph G, int path[][MAX_VERTEX_NUM], double D[][MAX_VERTEX_NUM])//求最短路径
+{
+    int u, v, w;
+    for (v = 0; v < G.vexnum; v++)
+        for (w = 0; w < G.vexnum; w++) {
+            D[v][w] = a[v][w];//对最短距离初始化为任意两点之间的权值
+            if (a[v][w] < INFINITY)
+                path[v][w] = v;//对最短路径初始化为自身的前一个结点的序号
+        }
+    for (u = 0; u < G.vexnum; u++)
+        for (v = 0; v < G.vexnum; v++)
+            for (w = 0; w < G.vexnum; w++)
+                if (D[v][u] + D[u][w] < D[v][w])//如果新加入的结点导致最短路径变短了，就更改他，同时记录增加的路径的编号
+                {
+                    D[v][w] = D[v][u] + D[u][w];
+                    path[v][w] = u;
+                }
+}
+
+void MiniDistanse(ALGraph G1, int path[][MAX_VERTEX_NUM], double D[][MAX_VERTEX_NUM])//输出最短路径
+{
+    ShortestPath(G1, path, D);
+    string A, B;
+    cout << "请输入要查询距离的两个景点的名称：";
+    cin >> A >> B;
+    int i = locateNode(G1, A);
+    int j = locateNode(G1, B);
+    cout << "最短路径为：";
+    OutPutShortestPath(G1, path, D, i, j);
+    cout << "最短距离为：" << D[i][j] << endl;
+}
+
+void OutPutShortestPath(ALGraph G, int path[][MAX_VERTEX_NUM], double D[][MAX_VERTEX_NUM], int i,
+                        int j) {
+    if (path[i][j] == i)
+        cout << G.adjlist[i].name << "--" << G.adjlist[j].name << endl;//输出经过的最短路径上的边的两端顶点
+    else {
+        OutPutShortestPath(G, path, D, i, path[i][j]);//依次找经过的中间路径
+        OutPutShortestPath(G, path, D, path[i][j], j);
+    }
 }

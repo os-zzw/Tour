@@ -24,7 +24,9 @@ typedef struct ArcNode {
 } ArcNode;
 //表结点
 typedef struct VNode {
-    string name;//名字
+    string name;//景点名字
+    string desc;//景点的详细介绍
+    int popularValue;//受欢迎程度
     ArcNode *firstarc;//所有的边
 } VNode, AdjList[MAX_VERTEX_NUM];
 //图邻接表
@@ -56,7 +58,7 @@ int locateNode(ALGraph g, string nodeName);
 /**
  * 输出图
  */
-void OutputGraph(ALGraph g);
+void OutputGraph(ALGraph g, bool isprint);
 
 /**
  * 导游路线图
@@ -68,5 +70,19 @@ void DFSTraverse(ALGraph G);//图的深度遍历
 bool IsEdge(ALGraph G, string v1, string v2);//判断要查的这两个顶点之间是否有直接相连的边
 
 void CreateTourSortGraph(ALGraph G, ALGraph G1);
+/**
+ * 找回路
+ */
+
+/**
+ * 求两个景点之间的最短路径,和最短距离
+ */
+void ShortestPath(ALGraph G, int path[][MAX_VERTEX_NUM], double D[][MAX_VERTEX_NUM]);//计算最短路径
+
+void OutPutShortestPath(ALGraph G, int path[][MAX_VERTEX_NUM], double D[][MAX_VERTEX_NUM], int i,
+                        int j);//求最短路径
+
+
+void MiniDistanse(ALGraph G, int path[][MAX_VERTEX_NUM], double D[][MAX_VERTEX_NUM]);//输出最短路径
 
 #endif //TOUR_LIST_H
