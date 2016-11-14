@@ -2,12 +2,20 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/search.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/create.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/search.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/carGuild.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Stack.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Graph.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/create.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Graph.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StackNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/search.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/search.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/create.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StackNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Stack.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/carGuild.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

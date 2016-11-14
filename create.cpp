@@ -4,7 +4,6 @@
 #include <iostream>
 #include "create.h"
 
-
 /**
  * 创建图
  */
@@ -32,9 +31,13 @@ void showMenu() {
     cout << "                  ";
     cout << "6、输出道路修建规划图。" << endl;
     cout << "                  ";
-    cout << "7、输入景点详细信息,并进行查找排序。" << endl;
+    cout << "7、输入景点详细信息。" << endl;
     cout << "                  ";
-    cout << "8、停车场车辆进出记录信息。" << endl;
+    cout << "8、搜索某个景点的具体信息。" << endl;
+    cout << "                  ";
+    cout << "9、把景点按照受欢迎程度进行排序。" << endl;
+    cout << "                  ";
+    cout << "10、停车场车辆进出记录信息。" << endl;
     cout << "                  ";
 }
 
@@ -71,6 +74,7 @@ void CreateGraph(ALGraph &g) {
         ArcNode *node1 = new ArcNode;
         ArcNode *node2 = new ArcNode;
         //设置第一个节点
+
         node1->w = w;
         node1->adjvex = index2;//他的相邻节点
         node1->nextarc = g.adjlist[index1].firstarc;

@@ -29,11 +29,13 @@ typedef struct VNode {
     int popularValue;//受欢迎程度
     ArcNode *firstarc;//所有的边
 } VNode, AdjList[MAX_VERTEX_NUM];
+
 //图邻接表
 typedef struct {
     AdjList adjlist;
     int vexnum, arcnum;
 } ALGraph;
+
 //边
 typedef struct edge {
     string vex;

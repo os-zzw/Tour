@@ -2,6 +2,10 @@
 // Created by john on 2016/11/13.
 //
 
+#include <iostream>
+#include "create.h"
+#include "search.h"
+
 void sortByPopular(ALGraph &g) {
     int a[MAX_VERTEX_NUM];
     for (int i = 0; i < g.vexnum; ++i) {
@@ -37,7 +41,6 @@ void quickSort(int s[], int l, int r) {
         quickSort(s, i + 1, r);
     }
 }
-
 
 //查找
 void searchNode(ALGraph &g) {
