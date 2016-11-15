@@ -2,8 +2,10 @@
 // Created by john on 2016/11/13.
 //
 #include <iostream>
+#include <cstdlib>
 #include "carGuild.h"
 #include "Stack.h"
+#include "Queue.h"
 
 
 using namespace std;
@@ -23,49 +25,95 @@ void createStack() {
 }
 
 Stack *stack = new Stack;
+Stack *stack2 = new Stack;
+Queue *queue = new Queue;
+int count = 0;
+int count2 = 0;
 
 void showMenu2() {
-    cout << "       *** åœè½¦åœºç®¡ç†ç¨‹åº ***   " << endl;
+    cout << "       *** Í£³µ³¡¹ÜÀí³ÌÐò ***   " << endl;
     cout << "================================" << endl;
     cout << "**                               " << endl;
-    cout << "**   1--- æ±½è½¦è¿›è½¦åœº 2--- æ±½è½¦å‡ºè½¦åœº                            " << endl;
+    cout << "**   1--- Æû³µ½ø³µ³¡ 2--- Æû³µ³ö³µ³¡  " << endl;
     cout << "**                               " << endl;
-    cout << "**     3 --- é€€å‡º ç¨‹åº                          " << endl;
-    cout << "**                               " << endl;
-    cout << "================================" << endl;
-    cout << " è¯·é€‰æ‹© <1 2 3 > : " << endl;
-    int in;
-    cin >> in;
-    switch (in) {
-        case 1:
-            inCar();
-            break;
-        case 2:
-            outCar();
-        default:
-            break;
-    }
+    cout << "**     3 --- ÍË³ö ³ÌÐò            " << endl;
+    cout << "**                                " << endl;
+    cout << "================================  " << endl;
 
+    while (true) {
+        cout << " ÇëÑ¡Ôñ <1 2 3 > : " << endl;
+        int in;
+        cin >> in;
+        switch (in) {
+            case 1:
+                inCar();
+                break;
+            case 2:
+                outCar();
+                break;
+            case 3:
+                exit(0);
+            default:
+                exit(0);
+        }
+    }
 }
 
 void outCar() {
     int card;
-    cout << "è½¦ç‰Œä¸º:";
-    cin >> card;
     int out_time;
-    cin >> out_time;
+    cout << "ÇëÊäÈë³µÅÆºÍ" << "Æû³µÀëÈ¥µÄÊ±¼ä";
+    cin >> card >> out_time;
+    //³öÕ»´¦Àí
+    StackNode *node;
+    for (int i = 0; i < MAXCAR; i++) {
+        node = stack->top;
+        pop(stack, count);
+        push2(stack2, node, count2);
+        if (node->data->number == card) {
+            int i = out_time - node->data->ar_time;
+            cout << "ÄúÓ¦¸ÃÉÏ½»µÄÇ®ÊýÊÇ(Ã¿Ð¡Ê±1¿éÇ®):" << i << endl;
+            pop2(stack2, count2);
+            for (int i = 0; i < count2; i++) {
+                push(stack, node, count);
+            }
+            //³ö¶Ó´¦Àí
+            if (queue->front != NULL) {
+                QueueNode *pNode = deQueue(queue);
+                node->data = pNode->data;
+                push(stack, node, count);
+                cout << "ÅÅ¶ÓÖÐµÚÒ»Á¾³µ,³µÅÆºÅÎª" << node->data->number << "µÄ³µ½øÈëÍ£³µ³¡" << endl;
+            }
+            delete[]node;
+            return;
+        }
+    }
+
 
 }
 
 void inCar() {
     int card;
-    cout << "è½¦ç‰Œä¸º:";
-    cin >> card;
     int in_time;
-    cout << "è¿›åœºçš„æ—¶é—´ä¸º:";
-    cin >> in_time;
+    cout << "ÇëÊäÈë³µÅÆºÍ" << "½ø³¡µÄÊ±¼äÎª:";
+    cin >> card >> in_time;
+    //ÈëÕ»´¦Àí
     zanInode *inode = new zanInode;
     inode->ar_time = in_time;
-    StackNode *node = new StackNode;
-    push(stack, node);
+    inode->number = card;
+    if (count < MAXCAR) {
+        StackNode *node = new StackNode;
+        node->data = inode;
+        push(stack, node, count);
+        if (count <= MAXCAR) {
+            cout << "ÄúµÄ³µÒÑ¾­±»Í£ÔÚÁË" << count << "ºÅ³µµÀ" << endl;
+        }
+    } else {
+        //Èë¶Ó´¦Àí
+        QueueNode *node = new QueueNode;
+        node->data = inode;
+        enQueue(queue, node);
+        cout << "³µ¶ÓÒÑ¾­ÂúÁË,ÇëÅÅ¶ÓµÈºò" << endl;
+    }
+    return;
 }

@@ -9,9 +9,9 @@
 
 void inputTheDetail(ALGraph &g, bool isDetail);
 
-void searchNode(ALGraph &g);
+void searchNode(ALGraph g);
 
-void sortByPopular(ALGraph &g);
+void sortByPopular(ALGraph g);
 
 void quickSort(int *pInt, int lo, int hi);
 #endif //TOUR_SEARCH_H

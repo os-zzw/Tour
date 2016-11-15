@@ -6,15 +6,19 @@
       <sourceFolder url="file://$MODULE_DIR$/Stack.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Graph.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/create.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Graph.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/StackNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Queue.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/search.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/search.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/QueueNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Graph.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/QueueNode.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/create.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/StackNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Stack.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Queue.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/carGuild.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

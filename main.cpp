@@ -23,7 +23,6 @@ int main() {
         cout << endl << endl << endl;
         cout << "请输入您要选择的菜单项：";
         cin >> n;
-
         while (Is && !IsZeroOrOne(n)) {
             cout << "您还不能进行此操作，请先创建图。" << endl;
             cin >> n;
@@ -43,15 +42,15 @@ int main() {
             case 3:
                 CreateTourSortGraph(G, G1);
                 break;
-//            case 4:
+            case 4:
 //                TopoSort(G1);
-//                break;
+                break;
             case 5:
                 MiniDistanse(G, path, D);
                 break;
-//            case 6:
+            case 6:
 //                MiniSpanTree(G, G.adjlist[0].name);
-//                break;
+                break;
             case 7:
                 inputTheDetail(G, IsDetail);
                 break;
@@ -62,7 +61,7 @@ int main() {
                 sortByPopular(G);
                 break;
             case 10:
-                carGuild();
+                showMenu2();
                 break;
             default:
                 exit(0);

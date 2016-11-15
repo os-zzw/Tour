@@ -6,14 +6,13 @@
 #include "create.h"
 #include "search.h"
 
-void sortByPopular(ALGraph &g) {
+void sortByPopular(ALGraph g) {
     int a[MAX_VERTEX_NUM];
     for (int i = 0; i < g.vexnum; ++i) {
         a[i] = g.adjlist[i].popularValue;
     }
     quickSort(a, 0, 7);
-    cout << a;
-    cout << "æœ€å—æ¬¢è¿çš„æ™¯ç‚¹ä¾æ¬¡ä¸º:" << endl;
+    cout << "×îÊÜ»¶Ó­µÄ¾°µãÒÀ´ÎÎª:" << endl;
     for (int j = 0; j < g.vexnum; ++j) {
         for (int i = 0; i < g.vexnum; ++i) {
             if (g.adjlist[i].popularValue == a[j]) {
@@ -27,38 +26,38 @@ void quickSort(int s[], int l, int r) {
     if (l < r) {
         int i = l, j = r, x = s[l];
         while (i < j) {
-            while (i < j && s[j] >= x) // ä»å³å‘å·¦æ‰¾ç¬¬ä¸€ä¸ªå°äºxçš„æ•°
+            while (i < j && s[j] >= x) // ´ÓÓÒÏò×óÕÒµÚÒ»¸öĞ¡ÓÚxµÄÊı
                 j--;
             if (i < j)
                 s[i++] = s[j];
-            while (i < j && s[i] < x) // ä»å·¦å‘å³æ‰¾ç¬¬ä¸€ä¸ªå¤§äºç­‰äºxçš„æ•°
+            while (i < j && s[i] < x) // ´Ó×óÏòÓÒÕÒµÚÒ»¸ö´óÓÚµÈÓÚxµÄÊı
                 i++;
             if (i < j)
                 s[j--] = s[i];
         }
         s[i] = x;
-        quickSort(s, l, i - 1); // é€’å½’è°ƒç”¨
+        quickSort(s, l, i - 1); // µİ¹éµ÷ÓÃ
         quickSort(s, i + 1, r);
     }
 }
 
-//æŸ¥æ‰¾
-void searchNode(ALGraph &g) {
-    cout << "è¯·è¾“å…¥æ™¯ç‚¹çš„åå­—";
+//²éÕÒ
+void searchNode(ALGraph g) {
+    cout << "ÇëÊäÈë¾°µãµÄÃû×Ö";
     string name;
     cin >> name;
     for (int j = 0; j < g.vexnum; ++j) {
         bool exites = g.adjlist[j].name == name;
         if (exites) {
-            cout << "æ™¯ç‚¹çš„è¯¦ç»†ä¿¡æ¯ä¸º:" << g.adjlist[j].desc << endl;
-            cout << "æ™¯ç‚¹çš„å—æ¬¢è¿ç¨‹åº¦ä¸º:" << g.adjlist[j].popularValue;
+            cout << "¾°µãµÄÏêÏ¸ĞÅÏ¢Îª:" << g.adjlist[j].desc << endl;
+            cout << "¾°µãµÄÊÜ»¶Ó­³Ì¶ÈÎª:" << g.adjlist[j].popularValue;
         }
     }
 }
 
-//è¾“å…¥è¯¦ç»†æ™¯ç‚¹ä¿¡æ¯
+//ÊäÈëÏêÏ¸¾°µãĞÅÏ¢
 void inputTheDetail(ALGraph &g, bool isDetail) {
-    cout << "è¯·è¾“å…¥æ™¯ç‚¹çš„åå­— ä»‹ç» å’Œå—æ¬¢è¿ç¨‹åº¦(ç”¨æ•°å­—æ¥è¡¨ç¤º,æ•°å­—è¶Šå¤§è¶Šå—æ¬¢è¿)";
+    cout << "ÇëÊäÈë¾°µãµÄÃû×Ö ½éÉÜ ºÍÊÜ»¶Ó­³Ì¶È(ÓÃÊı×ÖÀ´±íÊ¾,Êı×ÖÔ½´óÔ½ÊÜ»¶Ó­)";
     string name, desc;
     int popularValue;
     for (int i = 0; i < g.vexnum; ++i) {
@@ -72,7 +71,7 @@ void inputTheDetail(ALGraph &g, bool isDetail) {
         }
     }
     for (int k = 0; k < g.vexnum; ++k) {
-        cout << g.adjlist[k].name << "   " << g.adjlist[k].desc << "å—æ¬¢è¿ç¨‹åº¦ä¸º:"
+        cout << g.adjlist[k].name << "   " << g.adjlist[k].desc << "ÊÜ»¶Ó­³Ì¶ÈÎª:"
              << g.adjlist[k].popularValue << endl;
     }
     isDetail = true;

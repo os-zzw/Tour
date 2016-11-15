@@ -13,8 +13,12 @@ public:
     StackNode *top;
 };
 
-void push(Stack *stack, StackNode *node);
+void push(Stack *stack, StackNode *node, int &count);
 
-StackNode * pop(Stack *stack);
+StackNode *pop(Stack *stack, int &count);
+
+void push2(Stack *stack, StackNode *node, int &count);
+
+StackNode *pop2(Stack *stack, int &count);
 
 #endif //TOUR_STACK_H

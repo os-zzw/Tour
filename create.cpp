@@ -131,6 +131,7 @@ void OutputGraph(ALGraph g, bool isprint) {
         for (i = 0; i < g.vexnum; i++)
             cout << "\t" << g.adjlist[i].name;
         cout << endl;
+
         for (i = 0; i < g.vexnum; i++) {
             cout << g.adjlist[i].name << "\t";
             for (j = 0; j < g.vexnum; j++)

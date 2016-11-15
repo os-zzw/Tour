@@ -5,7 +5,7 @@
 #ifndef TOUR_CARGUILD_H
 #define TOUR_CARGUILD_H
 
-#define MAXCAR 5 //最大停车数量
+#define MAXCAR 2 //最大停车数量
 using namespace std;
 
 typedef struct zanlind {
