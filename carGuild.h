@@ -25,10 +25,6 @@ void showMenu2();
 
 void carGuild();
 
-void createStack();
-
-void createQueue();
-
 void inCar();
 
 void outCar();

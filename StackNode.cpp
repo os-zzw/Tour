@@ -4,11 +4,3 @@
 
 #include "StackNode.h"
 #include "carGuild.h"
-
-void push(zanInode *carIn){
-
-}
-
-void pop(){
-
-}

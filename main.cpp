@@ -5,17 +5,21 @@
 #include "carGuild.h"
 
 
+int isCreate(bool Is, int n);
+
+void OutRoadPlan(ALGraph g, string basic_string);
+
 int main() {
 
-    bool Is = true;//过滤
+    bool createdG = true;//过滤
     int n;//输入
-    ALGraph G, G1;//图
+    ALGraph g, g1;//图
 
     bool IsDetail = false;
 
     //path用来存储经过的路径，D用来存储两个顶点之间的距离
-    int path[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
-    double D[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
+    int path[MAXNODENUM][MAXNODENUM];
+    double D[MAXNODENUM][MAXNODENUM];
 
     showMenu();//菜单
 
@@ -23,51 +27,63 @@ int main() {
         cout << endl << endl << endl;
         cout << "请输入您要选择的菜单项：";
         cin >> n;
-        while (Is && !IsZeroOrOne(n)) {
-            cout << "您还不能进行此操作，请先创建图。" << endl;
-            cin >> n;
-        }
-        Is = false;
-
+        //判断是否已经创建了图
+        n = isCreate(createdG, n);
+        createdG = false;
         switch (n) {
             case 0:
                 exit(0);
             case 1:
-                CreateGraph(G);
-                OutputGraph(G, false);//创建数组
+                CreateGraph(g);
+                OutputGraph(g, false);//创建数组
                 break;
             case 2:
-                OutputGraph(G, true);//输出内容
+                OutputGraph(g, true);//输出矩阵
                 break;
             case 3:
-                CreateTourSortGraph(G, G1);
+                OutTheTour(g, g1);//输出导游路线图
                 break;
             case 4:
-//                TopoSort(G1);
+                TopoSort(g1);//输出导游路中的回路
                 break;
             case 5:
-                MiniDistanse(G, path, D);
+                MiniDistanse(g, path, D);//求最短路径
                 break;
             case 6:
-//                MiniSpanTree(G, G.adjlist[0].name);
+                OutRoadPlan(g, g.nodeList[0].name);//输出道路修建规划图
                 break;
             case 7:
-                inputTheDetail(G, IsDetail);
+                inputTheDetail(g, IsDetail);//输入景点详细信息
                 break;
             case 8:
-                searchNode(G);
+                searchNode(g);//搜索某个景点的具体信息
                 break;
             case 9:
-                sortByPopular(G);
+                sortByPopular(g);//将景点进行排序
                 break;
             case 10:
-                showMenu2();
+                carGuild();//停车场车辆进出记录信息
                 break;
             default:
                 exit(0);
         }
     }
 
+}
+
+void OutRoadPlan(ALGraph g, string basic_string) {
+    Edge edge;
+    int i = locateNode(g, basic_string);
+
+}
+
+int isCreate(bool Is, int n) {
+    while (Is && !IsZeroOrOne(n)) {
+        cout << "您还不能进行此操作，请先创建图。" << endl;
+        cin >> n;
+    }
+
+    return n;
 }
 
 

@@ -12,17 +12,8 @@ using namespace std;
 
 void carGuild() {
     showMenu2();
-    createStack();
-    createQueue();
 }
 
-void createQueue() {
-
-}
-
-void createStack() {
-
-}
 
 Stack *stack = new Stack;
 Stack *stack2 = new Stack;
@@ -88,7 +79,6 @@ void outCar() {
             return;
         }
     }
-
 
 }
 

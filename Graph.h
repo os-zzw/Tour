@@ -8,7 +8,7 @@
 #include "create.h"
 
 class Graph {
-    AdjList adjlist;
+    NodeList adjlist;
     int vexnum, arcnum;
 };
 
